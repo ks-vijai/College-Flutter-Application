@@ -4,4 +4,5 @@ This application shows the Information of the particular student with static per
 
 Screenshot :
 
-![image](https://user-images.githubusercontent.com/78490928/188658403-7db374c5-66b8-4e2e-af62-c21e03ad9ad3.png)
+![Screenshot (42)](https://user-images.githubusercontent.com/78490928/188658706-c7aee2ae-df84-4c42-bca5-907b013fe325.png)
+
