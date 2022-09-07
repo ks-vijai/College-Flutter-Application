@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-
+import 'quotes.dart';
 void main() =>
   runApp(MaterialApp(
     home: Home(),
@@ -11,180 +11,57 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int rank=0;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.grey[800],
-      appBar: AppBar(
-        title: Text('College ID App'),
-        centerTitle: true,
-        backgroundColor: Colors.grey[600],
-        elevation: 0.0,
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        backgroundColor: Colors.grey[700],
-        onPressed: () {
-          setState(() {
-            rank++;
-          });
-        },
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30.0, 20.0, 40.0, 30.0),
+  Widget quotesTemplate(quote) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/image.jpg'),
-                radius: 50.0,
+            Text(
+              quote.text,
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.grey[500],
+                letterSpacing: 1.0,
               ),
             ),
-            Divider(
-              height: 60.0,
-              color: Colors.grey[200],
-            ),
-            Text('NAME',
-            style: TextStyle(
-              color: Colors.grey[200],
-              letterSpacing: 2.0,
-            ),
-            ),
-           SizedBox(height:10.0),
-            Text('VIJAI K S',
+            SizedBox(height: 8.0),
+            Text(
+              quote.author,
               style: TextStyle(
-                color: Colors.yellow[200],
-                letterSpacing: 2.0,
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0,
-              ),
-            ),
-            SizedBox(height:30.0),
-            Text('COLLEGE',
-              style: TextStyle(
-                color: Colors.grey[200],
-                letterSpacing: 2.0,
-              ),
-            ),
-            SizedBox(height:10.0),
-            Text('KONGU ENGINEERING COLLEGE',
-              style: TextStyle(
-                color: Colors.yellow[200],
-                letterSpacing: 2.0,
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0,
-              ),
-            ),
-            SizedBox(height:30.0),
-            Row(
-              children: [
-                Icon(
-                  Icons.email,
-                  color: Colors.yellowAccent,
-                ),
-                SizedBox(width: 20.0),
-                Text('vijaiks.19cse@kongu.edu',
-                style: TextStyle(
-                  color: Colors.grey[200],
-                  fontSize: 20.0,
-                ),
-                )
-              ],
-            ),
-            SizedBox(height: 30.0),
-            Text('RANK',
-              style: TextStyle(
-                color: Colors.grey[200],
-                letterSpacing: 2.0,
-              ),
-            ),
-            SizedBox(height:10.0),
-            Text('$rank',
-              style: TextStyle(
-                color: Colors.yellow[200],
-                letterSpacing: 2.0,
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0,
+                fontSize: 14.0,
+                color: Colors.grey[800],
+                letterSpacing: 1.0,
               ),
             ),
           ],
         ),
-      )
+      ),
+    );
+  }
+  List<Quote> quotes = [
+    Quote(author: 'Vijai',text: 'Live peacefully and enjoy lonely'),
+    Quote(author: 'Vijai K S',text: 'Live peacefully and enjoy lonely')
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Quotes Application'),
+        backgroundColor: Colors.orange[200],
+        centerTitle: true,
+      ),
+      body:
+         Padding(
+           padding: const EdgeInsets.all(30.0),
+           child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+            children:
+              quotes.map((e) => quotesTemplate(e)).toList(),
+        ),
+         ),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- // class Home extends StatelessWidget {
- //   @override
- //   Widget build(BuildContext context) {
- //     return Scaffold(
- //       appBar: AppBar(
- //         title: Text('first app'),
- //         centerTitle: true,
- //         backgroundColor: Colors.orange[200],
- //       ),
- //       body: Column(
- //         mainAxisAlignment: MainAxisAlignment.spaceAround,
- //         crossAxisAlignment: CrossAxisAlignment.end,
- //         children: [
- //           Expanded(
- //             flex: 3,
- //             child: Container(
- //               color: Colors.orange[200],
- //               child: Text('second app'),
- //               padding: EdgeInsets.all(20.0),
- //               margin: EdgeInsets.all(20.0),
- //             ),
- //           ),
- //           Expanded(
- //             flex:2,
- //             child: Container(
- //               color: Colors.orange[200],
- //               child: Text('second app'),
- //               padding: EdgeInsets.all(20.0),
- //               margin: EdgeInsets.all(20.0),
- //             ),
- //           ),
- //           Expanded(
- //             flex:2,
- //             child: Container(
- //               color: Colors.orange[200],
- //               child: Text('second app'),
- //               padding: EdgeInsets.all(20.0),
- //               margin: EdgeInsets.all(20.0),
- //             ),
- //           ),
- //         ],
- //       ),
- //       floatingActionButton: FloatingActionButton(
- //         child: Text('third app'),
- //         backgroundColor: Colors.orange[300],
- //       ),
- //     );
- //   }
- // }
