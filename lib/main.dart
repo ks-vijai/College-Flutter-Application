@@ -31,7 +31,14 @@ class _HomeState extends State<Home> {
            child: Column(
              crossAxisAlignment: CrossAxisAlignment.start,
             children:
-              quotes.map((quote) => Quotes_card(quote: quote)).toList(),
+              quotes.map((quote) => Quotes_card(
+                  quote: quote,
+                  delete: () {
+                    setState(() {
+                      quotes.remove(quote);
+                    });
+                }
+              )).toList(),
         ),
          ),
     );
